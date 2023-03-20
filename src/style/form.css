@@ -1,0 +1,21 @@
+.form-layout{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.form-column{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.form-submit{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+input{
+  min-width: 200px;
+}
