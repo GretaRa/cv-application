@@ -1,5 +1,5 @@
 import { Component } from "react";
-import './../style/form.css';
+import "./../style/form.css";
 
 class General extends Component {
 
@@ -7,7 +7,7 @@ class General extends Component {
 		return (
 			<div>
 				<h3 className="form-header">Personal information</h3>
-				<form onSubmit={this.onSubmitForm}>
+				<form>
           <div className="form-layout">
             <div className="form-column">
               <label>First name:</label>
