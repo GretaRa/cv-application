@@ -5,95 +5,113 @@ class Education extends Component {
 		super(props);
 
 		this.state = {
-			status: "empty",
-			value: "",
+			status: "isEditable",
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleValueEdit = this.handleValueEdit.bind(this)
 	}
 
 	handleChange(event) {
-		this.setState({ value: event.target.value, status: "active" });
+		const target = event.target;
+		const name = target.name;
+		const value = target.value;
+
+		this.setState({
+			[name]: value,
+		});
 	}
 
 	handleSubmit(event) {
-		console.log(this.state.value); 
-		this.setState({ status: "submitted" });
+		this.setState({ status: "isSubmitted" });
 		event.preventDefault();
 	}
+
+  handleValueEdit(event){
+    this.setState({status: 'isEditable'});
+    event.preventDefault();
+  }
 
 	render() {
 		const { status, value } = this.state;
 
-		if (status === "submitted") {
+		if (status === "isSubmitted") {
 			return (
 				<div>
 					<h2 className="form-header">Education</h2>
-					<form>
-						<div className="form-layout">
-							<div className="form-column">
-								<h3>School name:</h3>
-								<p>{value}</p>
-								<h3>Title of study:</h3>
-								<p>Input</p>
+					<form onSubmit={this.handleValueEdit}>
+						<div className="form-display">
+							<div className="form-column-display">
+								<h3 className="name-display">{this.state.schoolName}</h3>
+								<p>{this.state.studyTitle}</p>
 							</div>
-							<div className="form-column">
-								<h3>From:</h3>
-								<p>Date</p>
-								<h3>To:</h3>
-								<p>Date</p>
+							<div className="form-column-display">
+								<p>{this.state.educationStart} - {this.state.educationEnd}</p>
 							</div>
 						</div>
 						<button
-							disabled={status === "empty"}
-							className="form-submit"
-							type="submit"
+              className="form-button"
+              type="submit"
 						>
-							Save
+							Edit
 						</button>
 					</form>
 				</div>
 			);
 		}
 
-		return (
-			<div>
-				<h3 className="form-header">Education</h3>
-				<form onSubmit={this.handleSubmit}>
-					<div className="form-layout">
-						<div className="form-column">
-							<label>School name:</label>
-							<input
-                value={value}
-								onChange={this.handleChange}
-								type="text"
-								name="schoolName"
-								placeholder="Private lessons"
-							></input>
-							<label>Title of study:</label>
-							<input
-								type="text"
-								name="studyTitle"
-								placeholder="Mathematics"
-							></input>
-						</div>
-						<div className="form-column">
-							<label>From:</label>
-							<input type="date" name="educationStart"></input>
-							<label>To:</label>
-							<input type="date" name="educationEnd"></input>
-						</div>
-					</div>
-					<button
-						disabled={status === "empty"}
-						className="form-submit"
-						type="submit"
-					>
-						Save
-					</button>
-				</form>
-			</div>
-		);
+    if (status === "isEditable"){
+      return (
+        <div>
+          <h2 className="form-header">Education</h2>
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-layout">
+              <div className="form-column">
+                <label>School name:</label>
+                <input
+                  value={value}
+                  onChange={this.handleChange}
+                  type="text"
+                  name="schoolName"
+                  placeholder="Private lessons"
+                ></input>
+                <label>Title of study:</label>
+                <input
+                  value={value}
+                  onChange={this.handleChange}
+                  type="text"
+                  name="studyTitle"
+                  placeholder="Mathematics"
+                ></input>
+              </div>
+              <div className="form-column">
+                <label>From:</label>
+                <input
+                  value={value}
+                  onChange={this.handleChange}
+                  type="date"
+                  name="educationStart"
+                ></input>
+                <label>To:</label>
+                <input
+                  value={value}
+                  onChange={this.handleChange}
+                  type="date"
+                  name="educationEnd"
+                ></input>
+              </div>
+            </div>
+            <button 
+              className="form-button"
+              type="submit"
+            >
+              Save
+            </button>
+          </form>
+        </div>
+        
+      );
+    };
 	}
 }
 

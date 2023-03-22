@@ -38,7 +38,7 @@ class App extends Component {
           <General />
           <Education />
           <Experience />
-          <button>Print</button>
+          <button className='form-button'>Print</button>
         </div>
       </div>
     )

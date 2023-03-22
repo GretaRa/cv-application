@@ -6,7 +6,7 @@ class General extends Component {
 	render() {
 		return (
 			<div>
-				<h3 className="form-header">Personal information</h3>
+				<h2 className="form-header">Personal information</h2>
 				<form>
           <div className="form-layout">
             <div className="form-column">
@@ -22,7 +22,7 @@ class General extends Component {
               <input type="text" name="phoneNumber" placeholder="123123"></input>
             </div>
           </div>
-          <button className="form-submit" type="submit">Save</button>
+          <button className="form-button" type="submit">Save</button>
 				</form>
 			</div>
 		);

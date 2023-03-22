@@ -4,7 +4,7 @@ class Experience extends Component {
 	render() {
 		return (
       <div>
-				<h3 className="form-header">Practical experience</h3>
+				<h2 className="form-header">Practical experience</h2>
 				<form>
           <div className="form-layout">
             <div className="form-column">
@@ -20,7 +20,7 @@ class Experience extends Component {
               <input type="date" name="educationEnd"></input>
             </div>
           </div>
-          <button className="form-submit" type="submit">Save</button>
+          <button className="form-button" type="submit">Save</button>
 				</form>
 			</div>
 		);
