@@ -5,11 +5,11 @@ class Education extends Component {
 		super(props);
 
 		this.state = {
-			status: "isEditable",
+			status: "isNew",
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleValueEdit = this.handleValueEdit.bind(this)
+		this.handleValueEdit = this.handleValueEdit.bind(this);
 	}
 
 	handleChange(event) {
@@ -27,13 +27,111 @@ class Education extends Component {
 		event.preventDefault();
 	}
 
-  handleValueEdit(event){
-    this.setState({status: 'isEditable'});
-    event.preventDefault();
-  }
+	handleValueEdit(event) {
+		this.setState({ status: "isEdit" });
+		event.preventDefault();
+	}
 
 	render() {
 		const { status, value } = this.state;
+
+		if (status === "isNew") {
+			return (
+				<div>
+					<h2 className="form-header">Education</h2>
+					<form onSubmit={this.handleSubmit}>
+						<div className="form-layout">
+							<div className="form-column">
+								<label>School name:</label>
+								<input
+									value={value}
+									onChange={this.handleChange}
+									type="text"
+									name="schoolName"
+									placeholder="Private lessons"
+								></input>
+								<label>Title of study:</label>
+								<input
+									value={value}
+									onChange={this.handleChange}
+									type="text"
+									name="studyTitle"
+									placeholder="Mathematics"
+								></input>
+							</div>
+							<div className="form-column">
+								<label>From:</label>
+								<input
+									value={value}
+									onChange={this.handleChange}
+									type="date"
+									name="educationStart"
+								></input>
+								<label>To:</label>
+								<input
+									value={value}
+									onChange={this.handleChange}
+									type="date"
+									name="educationEnd"
+								></input>
+							</div>
+						</div>
+						<button className="form-button" type="submit">
+							Save
+						</button>
+					</form>
+				</div>
+			);
+		}
+
+		if (status === "isEdit") {
+			return (
+				<div>
+					<h2 className="form-header">Education</h2>
+					<form onSubmit={this.handleSubmit}>
+						<div className="form-layout">
+							<div className="form-column">
+								<label>School name:</label>
+								<input
+									value={this.state.schoolName}
+									onChange={this.handleChange}
+									type="text"
+									name="schoolName"
+									placeholder="Private lessons"
+								></input>
+								<label>Title of study:</label>
+								<input
+									value={this.state.studyTitle}
+									onChange={this.handleChange}
+									type="text"
+									name="studyTitle"
+									placeholder="Mathematics"
+								></input>
+							</div>
+							<div className="form-column">
+								<label>From:</label>
+								<input
+									value={this.state.educationStart}
+									onChange={this.handleChange}
+									type="date"
+									name="educationStart"
+								></input>
+								<label>To:</label>
+								<input
+									value={this.state.educationEnd}
+									onChange={this.handleChange}
+									type="date"
+									name="educationEnd"
+								></input>
+							</div>
+						</div>
+						<button className="form-button" type="submit">
+							Save
+						</button>
+					</form>
+				</div>
+			);
+		}
 
 		if (status === "isSubmitted") {
 			return (
@@ -46,72 +144,18 @@ class Education extends Component {
 								<p>{this.state.studyTitle}</p>
 							</div>
 							<div className="form-column-display">
-								<p>{this.state.educationStart} - {this.state.educationEnd}</p>
+								<p>
+									{this.state.educationStart} - {this.state.educationEnd}
+								</p>
 							</div>
 						</div>
-						<button
-              className="form-button"
-              type="submit"
-						>
+						<button className="form-button" type="submit">
 							Edit
 						</button>
 					</form>
 				</div>
 			);
 		}
-
-    if (status === "isEditable"){
-      return (
-        <div>
-          <h2 className="form-header">Education</h2>
-          <form onSubmit={this.handleSubmit}>
-            <div className="form-layout">
-              <div className="form-column">
-                <label>School name:</label>
-                <input
-                  value={value}
-                  onChange={this.handleChange}
-                  type="text"
-                  name="schoolName"
-                  placeholder="Private lessons"
-                ></input>
-                <label>Title of study:</label>
-                <input
-                  value={value}
-                  onChange={this.handleChange}
-                  type="text"
-                  name="studyTitle"
-                  placeholder="Mathematics"
-                ></input>
-              </div>
-              <div className="form-column">
-                <label>From:</label>
-                <input
-                  value={value}
-                  onChange={this.handleChange}
-                  type="date"
-                  name="educationStart"
-                ></input>
-                <label>To:</label>
-                <input
-                  value={value}
-                  onChange={this.handleChange}
-                  type="date"
-                  name="educationEnd"
-                ></input>
-              </div>
-            </div>
-            <button 
-              className="form-button"
-              type="submit"
-            >
-              Save
-            </button>
-          </form>
-        </div>
-        
-      );
-    };
 	}
 }
 
