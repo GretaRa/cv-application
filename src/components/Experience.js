@@ -1,7 +1,7 @@
 import { Component } from "react";
 
 class Experience extends Component {
-  constructor(props) {
+	constructor(props) {
 		super(props);
 
 		this.state = {
@@ -46,14 +46,16 @@ class Experience extends Component {
 								<input
 									value={value}
 									onChange={this.handleChange}
-									type="text" name="companyName"
+									type="text"
+									name="companyName"
 									required
 								></input>
 								<label>Position title:</label>
 								<input
 									value={value}
 									onChange={this.handleChange}
-									type="text" name="positionTitle"
+									type="text"
+									name="positionTitle"
 									required
 								></input>
 							</div>
@@ -62,7 +64,8 @@ class Experience extends Component {
 								<input
 									value={value}
 									onChange={this.handleChange}
-									type="date" name="employmentStart" 
+									type="date"
+									name="employmentStart"
 									required
 								></input>
 								<label>To:</label>
@@ -94,14 +97,16 @@ class Experience extends Component {
 								<input
 									value={this.state.companyName}
 									onChange={this.handleChange}
-									type="text" name="companyName"
+									type="text"
+									name="companyName"
 									required
 								></input>
 								<label>Position title:</label>
 								<input
 									value={this.state.positionTitle}
 									onChange={this.handleChange}
-									type="text" name="positionTitle"
+									type="text"
+									name="positionTitle"
 									required
 								></input>
 							</div>
@@ -138,8 +143,10 @@ class Experience extends Component {
 					<form onSubmit={this.handleValueEdit}>
 						<div className="form-display">
 							<div className="form-column-display">
-								<span className="name-display">Company name:</span>{this.state.companyName}
-								<span className="name-display">Position title:</span>{this.state.positionTitle}
+								<span className="name-display">Company name:</span>
+								{this.state.companyName}
+								<span className="name-display">Position title:</span>
+								{this.state.positionTitle}
 							</div>
 							<div className="form-column-display">
 								<span className="name-display">From:</span>

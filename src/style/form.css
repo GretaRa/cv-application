@@ -1,38 +1,38 @@
-.form-layout{
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+.form-layout {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
 }
 
-.form-column{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 5px;
+.form-column {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 5px;
 }
 
-.form-button{
-  margin-top: 20px;
-  margin-bottom: 20px;
+.form-button {
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
-input{
-  min-width: 200px;
+input {
+	min-width: 200px;
 }
 
-.form-display{
-  display: flex;
-  gap: 100px;
-  margin-left: 31%;
+.form-display {
+	display: flex;
+	gap: 100px;
+	margin-left: 31%;
 }
 
-.form-column-display{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.form-column-display {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
 
-.name-display{
-  margin-bottom: 0;
-  font-weight: bold;
+.name-display {
+	margin-bottom: 0;
+	font-weight: bold;
 }

@@ -5,10 +5,6 @@ import Education from "./components/Education";
 import Experience from "./components/Experience";
 
 class App extends Component {
-	print() {
-		window.print();
-	}
-
 	render() {
 		return (
 			<div className="cv-container">

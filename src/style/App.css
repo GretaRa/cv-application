@@ -1,13 +1,13 @@
-*{
-  font-family: 'Roboto Mono', monospace;
+* {
+	font-family: "Roboto Mono", monospace;
 }
 
-.cv-content{
-  border: 2px solid black;
-  max-width: 40%;
-  min-width: fit-content;
-  margin: 20px auto;
-  text-align: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
+.cv-content {
+	border: 2px solid black;
+	max-width: 40%;
+	min-width: fit-content;
+	margin: 20px auto;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }

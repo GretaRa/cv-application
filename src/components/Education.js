@@ -147,8 +147,10 @@ class Education extends Component {
 					<form onSubmit={this.handleValueEdit}>
 						<div className="form-display">
 							<div className="form-column-display">
-								<span className="name-display">School name:</span>{this.state.schoolName}
-								<span className="name-display">Study title:</span>{this.state.studyTitle}
+								<span className="name-display">School name:</span>
+								{this.state.schoolName}
+								<span className="name-display">Study title:</span>
+								{this.state.studyTitle}
 							</div>
 							<div className="form-column-display">
 								<span className="name-display">From:</span>
