@@ -49,6 +49,7 @@ class Education extends Component {
 									type="text"
 									name="schoolName"
 									placeholder="Private lessons"
+									required
 								></input>
 								<label>Title of study:</label>
 								<input
@@ -57,6 +58,7 @@ class Education extends Component {
 									type="text"
 									name="studyTitle"
 									placeholder="Mathematics"
+									required
 								></input>
 							</div>
 							<div className="form-column">
@@ -66,6 +68,7 @@ class Education extends Component {
 									onChange={this.handleChange}
 									type="date"
 									name="educationStart"
+									required
 								></input>
 								<label>To:</label>
 								<input
@@ -73,6 +76,7 @@ class Education extends Component {
 									onChange={this.handleChange}
 									type="date"
 									name="educationEnd"
+									required
 								></input>
 							</div>
 						</div>
@@ -98,6 +102,7 @@ class Education extends Component {
 									type="text"
 									name="schoolName"
 									placeholder="Private lessons"
+									required
 								></input>
 								<label>Title of study:</label>
 								<input
@@ -106,6 +111,7 @@ class Education extends Component {
 									type="text"
 									name="studyTitle"
 									placeholder="Mathematics"
+									required
 								></input>
 							</div>
 							<div className="form-column">
@@ -115,6 +121,7 @@ class Education extends Component {
 									onChange={this.handleChange}
 									type="date"
 									name="educationStart"
+									required
 								></input>
 								<label>To:</label>
 								<input
@@ -140,13 +147,14 @@ class Education extends Component {
 					<form onSubmit={this.handleValueEdit}>
 						<div className="form-display">
 							<div className="form-column-display">
-								<h3 className="name-display">{this.state.schoolName}</h3>
-								<p>{this.state.studyTitle}</p>
+								<span className="name-display">School name:</span>{this.state.schoolName}
+								<span className="name-display">Study title:</span>{this.state.studyTitle}
 							</div>
 							<div className="form-column-display">
-								<p>
-									{this.state.educationStart} - {this.state.educationEnd}
-								</p>
+								<span className="name-display">From:</span>
+								{this.state.educationStart}
+								<span className="name-display">To:</span>
+								{this.state.educationEnd}
 							</div>
 						</div>
 						<button className="form-button" type="submit">
