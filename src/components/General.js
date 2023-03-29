@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./../style/form.css";
 
 const General = () => {
-	const [status, setStatus] = useState("isNew");
+	const [status, setStatus] = useState("isEdit");
 
 	const initialValues = {
 		firstName: "",
@@ -21,7 +21,6 @@ const General = () => {
 			[name]: value,
 		});
 	};
-
 	const handleSubmit = (event) => {
 		setStatus("isSubmitted");
 		event.preventDefault();
@@ -31,61 +30,6 @@ const General = () => {
 		setStatus("isEdit");
 		event.preventDefault();
 	};
-
-	if (status === "isNew") {
-		return (
-			<div>
-				<h2 className="form-header">Personal information</h2>
-				<form onSubmit={handleSubmit}>
-					<div className="form-layout">
-						<div className="form-column">
-							<label>First name:</label>
-							<input
-								value={values.firstName}
-								onChange={handleChange}
-								type="text"
-								name="firstName"
-								placeholder="Ada"
-								required
-							></input>
-							<label>Last name:</label>
-							<input
-								value={values.lastName}
-								onChange={handleChange}
-								type="text"
-								name="lastName"
-								placeholder="Lovelace"
-								required
-							></input>
-						</div>
-						<div className="form-column">
-							<label>Email:</label>
-							<input
-								value={values.email}
-								onChange={handleChange}
-								type="email"
-								name="email"
-								placeholder="lovelace@pigeonmail.com"
-								required
-							></input>
-							<label>Phone number:</label>
-							<input
-								value={values.phoneNumber}
-								onChange={handleChange}
-								type="text"
-								name="phoneNumber"
-								placeholder="123123"
-								required
-							></input>
-						</div>
-					</div>
-					<button className="form-button" type="submit">
-						Save
-					</button>
-				</form>
-			</div>
-		);
-	}
 
 	if (status === "isEdit") {
 		return (
@@ -130,6 +74,7 @@ const General = () => {
 								type="text"
 								name="phoneNumber"
 								placeholder="123123"
+								required
 							></input>
 						</div>
 					</div>
@@ -141,7 +86,7 @@ const General = () => {
 		);
 	}
 
-	if (status === "isSubmitted") {
+	if (status !== "isEdit") {
 		return (
 			<div>
 				<h2 className="form-header">Personal information</h2>

@@ -1,168 +1,113 @@
-import { Component } from "react";
+import { useState } from "react";
+import "./../style/form.css";
 
-class Experience extends Component {
-	constructor(props) {
-		super(props);
+const Experience = () => {
+	const [status, setStatus] = useState("isEdit");
 
-		this.state = {
-			status: "isNew",
-		};
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleValueEdit = this.handleValueEdit.bind(this);
-	}
+	const initialValues = {
+		companyName: "",
+		positionTitle: "",
+		employmentStart: "",
+		employmentEnd: "",
+	};
+	const [values, setValues] = useState(initialValues);
 
-	handleChange(event) {
-		const target = event.target;
-		const name = target.name;
-		const value = target.value;
+	const handleChange = (event) => {
+		const { name, value } = event.target;
 
-		this.setState({
+		setValues({
+			...values,
 			[name]: value,
 		});
-	}
+	};
 
-	handleSubmit(event) {
-		this.setState({ status: "isSubmitted" });
+	const handleSubmit = (event) => {
+		setStatus("isSubmitted");
 		event.preventDefault();
-	}
+	};
 
-	handleValueEdit(event) {
-		this.setState({ status: "isEdit" });
+	const handleValueEdit = (event) => {
+		setStatus("isEdit");
 		event.preventDefault();
+	};
+
+	if (status === "isEdit") {
+		return (
+			<div>
+				<h2 className="form-header">Practical experience</h2>
+				<form onSubmit={handleSubmit}>
+					<div className="form-layout">
+						<div className="form-column">
+							<label>Company name:</label>
+							<input
+								value={values.companyName}
+								onChange={handleChange}
+								type="text"
+								name="companyName"
+								required
+							></input>
+							<label>Position title:</label>
+							<input
+								value={values.positionTitle}
+								onChange={handleChange}
+								type="text"
+								name="positionTitle"
+								required
+							></input>
+						</div>
+						<div className="form-column">
+							<label>From:</label>
+							<input
+								value={values.employmentStart}
+								onChange={handleChange}
+								type="date"
+								name="employmentStart"
+								required
+							></input>
+							<label>To:</label>
+							<input
+								value={values.employmentEnd}
+								onChange={handleChange}
+								type="date"
+								name="employmentEnd"
+								required
+							></input>
+						</div>
+					</div>
+					<button className="form-button" type="submit">
+						Save
+					</button>
+				</form>
+			</div>
+		);
 	}
 
-	render() {
-		const { status, value } = this.state;
-
-		if (status === "isNew") {
-			return (
-				<div>
-					<h2 className="form-header">Practical experience</h2>
-					<form onSubmit={this.handleSubmit}>
-						<div className="form-layout">
-							<div className="form-column">
-								<label>Company name:</label>
-								<input
-									value={value}
-									onChange={this.handleChange}
-									type="text"
-									name="companyName"
-									required
-								></input>
-								<label>Position title:</label>
-								<input
-									value={value}
-									onChange={this.handleChange}
-									type="text"
-									name="positionTitle"
-									required
-								></input>
-							</div>
-							<div className="form-column">
-								<label>From:</label>
-								<input
-									value={value}
-									onChange={this.handleChange}
-									type="date"
-									name="employmentStart"
-									required
-								></input>
-								<label>To:</label>
-								<input
-									value={value}
-									onChange={this.handleChange}
-									type="date"
-									name="employmentEnd"
-									required
-								></input>
-							</div>
+	if (status !== "isEdit") {
+		return (
+			<div>
+				<h2 className="form-header">Practical experience</h2>
+				<form onSubmit={handleValueEdit}>
+					<div className="form-display">
+						<div className="form-column-display">
+							<span className="name-display">Company name:</span>
+							{values.companyName}
+							<span className="name-display">Position title:</span>
+							{values.positionTitle}
 						</div>
-						<button className="form-button" type="submit">
-							Save
-						</button>
-					</form>
-				</div>
-			);
-		}
-
-		if (status === "isEdit") {
-			return (
-				<div>
-					<h2 className="form-header">Practical experience</h2>
-					<form onSubmit={this.handleSubmit}>
-						<div className="form-layout">
-							<div className="form-column">
-								<label>Company name:</label>
-								<input
-									value={this.state.companyName}
-									onChange={this.handleChange}
-									type="text"
-									name="companyName"
-									required
-								></input>
-								<label>Position title:</label>
-								<input
-									value={this.state.positionTitle}
-									onChange={this.handleChange}
-									type="text"
-									name="positionTitle"
-									required
-								></input>
-							</div>
-							<div className="form-column">
-								<label>From:</label>
-								<input
-									value={this.state.employmentStart}
-									onChange={this.handleChange}
-									type="date"
-									name="educationStart"
-									required
-								></input>
-								<label>To:</label>
-								<input
-									value={this.state.employmentEnd}
-									onChange={this.handleChange}
-									type="date"
-									name="employmentEnd"
-								></input>
-							</div>
+						<div className="form-column-display">
+							<span className="name-display">From:</span>
+							{values.employmentStart}
+							<span className="name-display">To:</span>
+							{values.employmentEnd}
 						</div>
-						<button className="form-button" type="submit">
-							Save
-						</button>
-					</form>
-				</div>
-			);
-		}
-
-		if (status === "isSubmitted") {
-			return (
-				<div>
-					<h2 className="form-header">Practical experience</h2>
-					<form onSubmit={this.handleValueEdit}>
-						<div className="form-display">
-							<div className="form-column-display">
-								<span className="name-display">Company name:</span>
-								{this.state.companyName}
-								<span className="name-display">Position title:</span>
-								{this.state.positionTitle}
-							</div>
-							<div className="form-column-display">
-								<span className="name-display">From:</span>
-								{this.state.employmentStart}
-								<span className="name-display">To:</span>
-								{this.state.employmentEnd}
-							</div>
-						</div>
-						<button className="form-button" type="submit">
-							Edit
-						</button>
-					</form>
-				</div>
-			);
-		}
+					</div>
+					<button className="form-button" type="submit">
+						Edit
+					</button>
+				</form>
+			</div>
+		);
 	}
-}
+};
 
 export default Experience;

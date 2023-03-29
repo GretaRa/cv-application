@@ -23,13 +23,13 @@ input {
 .form-display {
 	display: flex;
 	gap: 100px;
-	margin-left: 31%;
+	justify-content: center;
 }
 
 .form-column-display {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
+	align-items: center;
 }
 
 .name-display {
