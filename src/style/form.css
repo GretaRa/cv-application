@@ -36,3 +36,10 @@ input {
 	margin-bottom: 0;
 	font-weight: bold;
 }
+
+button{
+	padding: 5px 20px;
+	background-color: rgb(202, 202, 202);
+	font-weight: bold;
+	cursor: pointer;
+}
